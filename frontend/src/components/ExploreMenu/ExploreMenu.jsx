@@ -22,7 +22,6 @@ const ExploreMenu = ({category,setCategory}) => {
               which helps React efficiently update the UI.*/}
               <p>{item.menu_name}</p>
             </div>
-
           )
         })}
       </div>
