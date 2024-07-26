@@ -1,11 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
     const [cartItems,setCartItems] = useState({});
-
 
     const addToCart = (itemId) => {
         if(!cartItems[itemId]) {
@@ -26,6 +25,15 @@ const StoreContextProvider = (props) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
 
+    useEffect(()=>{
+        console.log(cartItems);
+    },[cartItems])
+
+    {/*The useEffect hook in your code is used to perform a side effect 
+        whenever the cartItems state changes.
+    Purpose: "The useEffect hook in this code is used to run side effects in response to changes in the cartItems state."
+    Function: "Whenever cartItems is updated, the effect function logs the current state of cartItems to the console. This helps with debugging and tracking how the state changes over time."
+    Dependency Array: "The dependency array [cartItems] ensures that the effect only runs when cartItems changes, preventing unnecessary executions."*/}
     const contextValue = {
         food_list,
         cartItems,
