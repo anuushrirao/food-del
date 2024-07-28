@@ -11,7 +11,9 @@ const Footer = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate expedita accusamus quisquam distinctio pariatur eaque ut voluptates omnis consequuntur. Sed, ea asperiores! Labore exercitationem, cupiditate fugit facilis quo odio vitae.</p>
                 <div className="footer-social-icons">
                     <img src={assets.facebook_icon}/>
-                    <img src={assets.linkedin_icon}/>
+                    <a href="https://www.linkedin.com/in/anushka-shrirao/" target="_blank">
+                        <img src={assets.linkedin_icon} alt="LinkedIn"/>
+                    </a>
                 </div>
             </div>
             <div className="footer-content-right">
