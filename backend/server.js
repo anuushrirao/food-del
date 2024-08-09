@@ -1,10 +1,13 @@
+// server.js
+
 import express from "express";
 import cors from "cors";
-import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 
+// Load environment variables
 dotenv.config();
 
 // Initialize the express application

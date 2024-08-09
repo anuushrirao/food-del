@@ -40,7 +40,12 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
-
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            setToken(localStorage.getItem("token"))
+        }
+    },[])
+    
     {/*The useEffect hook in your code is used to perform a side effect 
         whenever the cartItems state changes.
     Purpose: "The useEffect hook in this code is used to run side effects in response to changes in the cartItems state."
