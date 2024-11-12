@@ -21,26 +21,31 @@ const LoginPopup = ({setShowLogin}) => {
       setData(data=>({...data,[name]:value}))
     }
 
-    const onLogin = async(event) => {
+    const onLogin = async (event) => {
       event.preventDefault();
       let newUrl = url;
-      if(currState==='Login'){
-        newUrl += "/api/user/login"
+      if (currState === 'Login') {
+        newUrl += "/api/user/login";
+      } else {
+        newUrl += "/api/user/register";
       }
-      else{
-        newUrl += "/api/user/register"
+    
+      try {
+        const response = await axios.post(newUrl, data);
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+          setShowLogin(false);
+        } else {
+          alert(response.data.message || "An unknown error occurred");
+        }
+      } catch (error) {
+        // Extract the error message
+        const errorMessage = error.response?.data?.message || "Failed to login. Please try again.";
+        alert(errorMessage);
       }
-
-      const response = await axios.post(newUrl,data);
-      if(response.data.success){
-        setToken(response.data.token);
-        localStorage.setItem("token",response.data.token);
-        setShowLogin(false)
-      }
-      else{
-        alert(response)
-      }
-    }
+    };
+    
 
 
   return (

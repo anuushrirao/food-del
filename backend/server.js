@@ -7,6 +7,7 @@ import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import cartRouter from "./routes/cartRoutes.js";
+import orderRouter from "./routes/orderRoutes.js";
 // Load environment variables
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use("/api/user", userRouter);
 app.use("/api/food", foodRouter);
 app.use("/images", express.static('uploads'));
 app.use("/api/cart",cartRouter);
+app.use("/api/order",orderRouter);
 
 // Root endpoint
 app.get("/", (req, res) => {
